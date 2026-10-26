@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firecracker Order Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>🎆 Order Manager</h1>
+        <p>Customer & Order Management</p>
+    </header>
+
+    <main class="container">
+
+        <section class="summary">
+            <div class="summary-card">
+                <span>মোট কাস্টমার</span>
+                <h2 id="totalCustomers">0</h2>
+            </div>
+
+            <div class="summary-card pending-card">
+                <span>Pending Orders</span>
+                <h2 id="pendingCount">0</h2>
+            </div>
+
+            <div class="summary-card done-card">
+                <span>Done Orders</span>
+                <h2 id="doneCount">0</h2>
+            </div>
+        </section>
+
+        <nav class="tabs">
+            <button class="tab active" data-page="registerPage">
+                Add Customer
+            </button>
+
+            <button class="tab" data-page="orderPage">
+                Add Order
+            </button>
+
+            <button class="tab" data-page="listPage">
+                View Orders
+            </button>
+        </nav>
+
+        <!-- Customer Registration -->
+
+        <section id="registerPage" class="page active-page">
+            <div class="panel">
+                <h2>👤 Register Customer</h2>
+
+                <form id="customerForm">
+
+                    <label for="customerName">Customer Name</label>
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="কাস্টমারের নাম লেখো"
+                        required
+                    >
+
+                    <label for="customerPhone">Phone Number</label>
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        placeholder="মোবাইল নম্বর (ঐচ্ছিক)"
+                    >
+
+                    <button type="submit" class="primary-btn">
+                        + Add Customer
+                    </button>
+
+                </form>
+            </div>
+
+            <div class="panel">
+                <h2>Customer List</h2>
+                <div id="customerList"></div>
+            </div>
+        </section>
+
+        <!-- Add Order -->
+
+        <section id="orderPage" class="page">
+            <div class="panel">
+                <h2>🧾 Add New Order</h2>
+
+                <form id="orderForm">
+
+                    <label for="orderCustomer">Select Customer</label>
+                    <select id="orderCustomer" required>
+                        <option value="">কাস্টমার বেছে নাও</option>
+                    </select>
+
+                    <div class="product-area">
+                        <h3>Order Items</h3>
+
+                        <div id="orderItems"></div>
+
+                        <button
+                            type="button"
+                            id="addItemBtn"
+                            class="secondary-btn"
+                        >
+                            + Add Another Item
+                        </button>
+                    </div>
+
+                    <label for="orderNote">Note (Optional)</label>
+                    <textarea
+                        id="orderNote"
+                        placeholder="অর্ডার সম্পর্কে কিছু লিখতে চাইলে লেখো"
+                        rows="2"
+                    ></textarea>
+
+                    <button type="submit" class="primary-btn">
+                        Save Order
+                    </button>
+
+                </form>
+            </div>
+        </section>
+
+        <!-- View Orders -->
+
+        <section id="listPage" class="page">
+            <div class="panel">
+                <h2>📋 All Orders</h2>
+
+                <label for="filterCustomer">Customer Filter</label>
+                <select id="filterCustomer">
+                    <option value="all">সব কাস্টমার</option>
+                </select>
+
+                <label for="filterStatus">Order Status</label>
+                <select id="filterStatus">
+                    <option value="all">সব অর্ডার</option>
+                    <option value="pending">Pending</option>
+                    <option value="done">Done</option>
+                </select>
+
+                <div id="ordersList"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Firecracker Order Manager</p>
+        <p>অর্ডার রাখো সহজে, হিসাব রাখো ঠিকভাবে।</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
